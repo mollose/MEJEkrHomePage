@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MEJE WORKS IP Partnership — Worldbuilding libraries, character design, and fandom activity development for brand, game, fandom, and art IPs. Revenue share and IP transfer models.">
+<title>IP Partnership — MEJE Works</title>
+<meta property="og:title" content="IP Partnership — MEJE Works">
+<meta property="og:description" content="Worldbuilding libraries, character design, fandom activity development — Revenue share and IP transfer models">
+<meta property="og:image" content="https://meje.kr/img/og-cover.png">
+<meta property="og:url" content="https://meje.kr/ar/ip.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="ko" href="https://meje.kr/ip.html">
+<link rel="alternate" hreflang="ar" dir="rtl" href="https://meje.kr/ar/ip.html">
+<link rel="alternate" hreflang="ja" href="https://meje.kr/ja/ip.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://meje.kr/zh-tw/ip.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://meje.kr/zh-cn/ip.html">
+<link rel="alternate" hreflang="ar" href="https://meje.kr/ar/ip.html">
+<link rel="alternate" hreflang="fa" href="https://meje.kr/fa/ip.html">
+<link rel="alternate" hreflang="ur" href="https://meje.kr/ur/ip.html">
+<link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+<link rel="apple-touch-icon" href="../img/logo.png">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;700&family=Noto+Sans+Arabic&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+/* ── LANGUAGE BAR ── */
+.lang-bar { display:flex; gap:8px; align-items:center; }
+.lang-bar a { font-family:var(--mono); font-size:10px; color:var(--text-dim); text-decoration:none; letter-spacing:0.04em; transition:color 0.2s; }
+.lang-bar a:hover { color:var(--text-sub); }
+.lang-bar a.active { color:var(--accent); }
+.lang-bar .sep { color:var(--text-dim); font-size:8px; opacity:0.4; }
+
+/* ── IP PAGE HERO ── */
+#ip-hero {
+  max-width: 100%;
+  padding: 120px 40px 100px;
+  border-bottom: 1px solid var(--border-dim);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+#ip-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 1px; height: 48px;
+  background: linear-gradient(to bottom, var(--accent-dim), transparent);
+}
+
+/* ── IP DOMAIN GRID ── */
+.domain-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+
+.domain-card {
+  background: var(--bg-2);
+  border: 1px solid var(--border-dim);
+  padding: 32px 24px;
+  text-align: center;
+  transition: background 0.2s, border-color 0.2s;
+}
+.domain-card:hover {
+  background: var(--bg-3);
+  border-color: var(--border);
+}
+
+.domain-card-icon {
+  font-size: 28px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.domain-card-title {
+  font-family: var(--display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.domain-card-en {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+/* ── SERVICE PILLAR ── */
+.pillar-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px;
+}
+
+.pillar {
+  background: var(--bg-2);
+  border: 1px solid var(--border-dim);
+  padding: 36px 40px;
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 24px;
+  align-items: start;
+  transition: background 0.2s;
+}
+.pillar:hover { background: var(--bg-3); }
+
+.pillar-num {
+  font-family: var(--mono);
+  font-size: 24px;
+  color: var(--accent);
+  font-weight: 300;
+  text-align: center;
+  padding-top: 2px;
+}
+
+.pillar-title {
+  font-family: var(--display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.pillar-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.pillar-tags {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.pillar-tag {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  border: 1px solid var(--border-dim);
+  padding: 2px 8px;
+}
+
+/* ── MODEL COMPARE ── */
+.model-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.model-card {
+  background: var(--bg-2);
+  border: 1px solid var(--border-dim);
+  padding: 36px 32px;
+  position: relative;
+}
+
+.model-card-badge {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  padding: 3px 10px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.model-card-badge.a {
+  color: var(--green);
+  border: 1px solid rgba(76,175,125,0.3);
+}
+.model-card-badge.b {
+  color: var(--accent);
+  border: 1px solid var(--accent-dim);
+}
+
+.model-card-title {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.model-card-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.model-card-items li {
+  font-size: 12px;
+  color: var(--text-dim);
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.6;
+}
+.model-card-items li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--text-muted);
+}
+
+/* ── TIMELINE FLOW ── */
+.flow-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+
+.flow-step {
+  background: var(--bg-2);
+  border: 1px solid var(--border-dim);
+  padding: 24px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.flow-step-week {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--accent-dim);
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.flow-step-title {
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.flow-step-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ── CTA BLOCK ── */
+.cta-block {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  padding: 48px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.cta-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.cta-title {
+  font-family: var(--display);
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.cta-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  font-family: var(--mono);
+  font-size: 13px;
+  padding: 10px 24px;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: 1px solid;
+}
+.cta-btn.primary {
+  color: var(--accent);
+  border-color: var(--accent-dim);
+}
+.cta-btn.primary:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+.cta-btn.secondary {
+  color: var(--text-muted);
+  border-color: var(--border);
+}
+.cta-btn.secondary:hover {
+  color: var(--text-dim);
+  border-color: var(--border);
+  background: var(--bg-3);
+}
+
+@media (max-width: 768px) {
+  #ip-hero { padding: 100px 20px 80px; }
+  .domain-grid { grid-template-columns: repeat(2, 1fr); }
+  .model-grid { grid-template-columns: 1fr; }
+  .flow-grid { grid-template-columns: repeat(2, 1fr); }
+  .pillar { grid-template-columns: 1fr; gap: 12px; }
+  .pillar-num { text-align: left; }
+  .cta-block { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">MEJE<span>.</span>KR</a>
+  <div class="lang-bar">
+    <a href="../ip.html">KR</a><span class="sep">&middot;</span>
+    <a href="ip.html">EN</a><span class="sep">&middot;</span>
+    <a href="../ja/ip.html">JA</a><span class="sep">&middot;</span>
+    <a href="../zh-tw/ip.html">繁</a><span class="sep">&middot;</span>
+    <a href="../zh-cn/ip.html">简</a><span class="sep">&middot;</span>
+    <a href="ip.html" class="active">AR</a><span class="sep">&middot;</span>
+    <a href="../fa/ip.html">FA</a><span class="sep">&middot;</span>
+    <a href="../ur/ip.html">UR</a>
+  </div>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">MENU</button>
+  <ul class="nav-links">
+    <li><a href="index.html">الرئيسية</a></li>
+    <li><a href="about.html">عن الشركة</a></li>
+    <li><a href="ceo.html">CEO</a></li>
+    <li><a href="works.html">الأعمال</a></li>
+    <li><a href="ip.html" class="active">IP</a></li>
+  </ul>
+  <span class="nav-badge">شراكة IP</span>
+</nav>
+
+<main>
+
+<!-- ── HERO ── -->
+<section id="ip-hero">
+  <span style="font-family:var(--mono); font-size:13px; color:var(--green); border:1px solid rgba(76,175,125,0.3); padding:3px 10px; display:inline-block; margin-bottom:24px; letter-spacing:0.1em; animation:fadeUp 0.8s ease both;">● شراكة IP</span>
+  <h1 style="font-family:var(--display); font-size:clamp(32px,5vw,56px); font-weight:700; color:var(--text); margin-bottom:16px; animation:fadeUp 0.8s ease 0.1s both;">
+    نبني IP من خلال بناء العوالم
+  </h1>
+  <p style="font-family:var(--mono), var(--sans); font-size:14px; color:var(--text-dim); max-width:540px; line-height:2.2; animation:fadeUp 0.8s ease 0.2s both;">
+    إنشاء مكتبة بناء العوالم · تصميم الشخصيات · تطوير أنشطة الفاندوم<br>
+    من شراكات تقاسم الإيرادات إلى النقل الكامل لـ IP،<br>
+    نصمم النموذج الأمثل لـ IP الخاص بك.
+  </p>
+</section>
+
+<!-- ── IP DOMAINS ── -->
+<section class="section reveal" id="domains">
+  <div class="sec-head">
+    <p class="sec-label">المجالات</p>
+    <h2 class="sec-title">مجالات IP المدعومة</h2>
+  </div>
+
+  <div class="terminal-prompt">
+    <span class="ps">crew@meje </span><span style="color:var(--text-muted);">~ </span><span class="cmd">ls </span><span class="flag">ip-domains/</span>
+  </div>
+
+  <div class="domain-grid">
+    <div class="domain-card">
+      <span class="domain-card-icon" style="color:var(--accent);">&#9819;</span>
+      <p class="domain-card-title">IP العلامة التجارية</p>
+      <p class="domain-card-en">IP العلامة التجارية</p>
+    </div>
+    <div class="domain-card">
+      <span class="domain-card-icon" style="color:var(--green);">&#9654;</span>
+      <p class="domain-card-title">IP الألعاب</p>
+      <p class="domain-card-en">IP الألعاب</p>
+    </div>
+    <div class="domain-card">
+      <span class="domain-card-icon" style="color:#7a9fbf;">&#9835;</span>
+      <p class="domain-card-title">IP الفاندوم / الموسيقى</p>
+      <p class="domain-card-en">الفاندوم · الموسيقى IP</p>
+    </div>
+    <div class="domain-card">
+      <span class="domain-card-icon" style="color:#b07acc;">&#9672;</span>
+      <p class="domain-card-title">IP الفن</p>
+      <p class="domain-card-en">IP الفن</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="section reveal" id="services">
+  <div class="sec-head">
+    <p class="sec-label">الخدمات</p>
+    <h2 class="sec-title">خدماتنا</h2>
+  </div>
+
+  <div class="terminal-prompt">
+    <span class="ps">crew@meje </span><span style="color:var(--text-muted);">~ </span><span class="cmd">cat </span><span class="flag">services/ip-partnership.yaml</span>
+  </div>
+
+  <div class="pillar-grid">
+    <div class="pillar">
+      <span class="pillar-num">01</span>
+      <div>
+        <h3 class="pillar-title">إنشاء مكتبة بناء العوالم</h3>
+        <p class="pillar-desc">
+          نحلل جوهر IP الخاص بك ونبني Setting Bible شاملة.
+          من ويكي المصطلحات والجداول الزمنية والهياكل المكانية إلى الهندسة السردية —
+          نصمم بشكل منهجي الأصول المعرفية التي تشكل أساس توسيع IP.
+        </p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Setting Bible</span>
+          <span class="pillar-tag">ويكي IP</span>
+          <span class="pillar-tag">الجدول الزمني</span>
+          <span class="pillar-tag">هندسة القصة</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillar">
+      <span class="pillar-num">02</span>
+      <div>
+        <h3 class="pillar-title">شخصية الشخصية والتصميم</h3>
+        <p class="pillar-desc">
+          ننشئ شخصيات أصلية تعكس هوية IP الخاص بك.
+          تشمل المخرجات إعدادات الشخصية والتصاميم البصرية وصحائف الشخصيات (أدلة التصميم)،
+          مع خيار الاختيار بين ترخيص الشخصيات أو النقل الكامل للحقوق.
+        </p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">تصميم الشخصيات Sheet</span>
+          <span class="pillar-tag">تصميم الشخصية</span>
+          <span class="pillar-tag">الدليل البصري</span>
+          <span class="pillar-tag">ترخيص / نقل</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillar">
+      <span class="pillar-num">03</span>
+      <div>
+        <h3 class="pillar-title">تطوير منصة أنشطة الفاندوم</h3>
+        <p class="pillar-desc">
+          نبني منصات فاندوم تفاعلية مدعومة بشخصياتك.
+          قصص يومية، رعاية الشخصيات، ألعاب مصغرة، سلع رقمية، بطاقات صور —
+          ننشئ نظاماً بيئياً للمحتوى يتفاعل معه المعجبون يومياً. بدعم أكثر من 40 لغة،
+          نصل إلى الفاندوم العالمي دون الحاجة إلى عروض ترويجية خارجية منفصلة.
+        </p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">منصة ويب</span>
+          <span class="pillar-tag">محتوى يومي</span>
+          <span class="pillar-tag">سلع رقمية</span>
+          <span class="pillar-tag">أكثر من 40 لغة</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillar">
+      <span class="pillar-num">04</span>
+      <div>
+        <h3 class="pillar-title">توسيع IP والأعمال الثانوية</h3>
+        <p class="pillar-desc">
+          بضائع الشخصيات، السلع الرقمية، السلع المادية المحدودة الإصدار، شراكات التمويل الجماعي —
+          نخطط ونشغل الأعمال الثانوية المشتقة من IP بناءً على البيانات.
+          تحليل تفضيلات المعجبين يتيح تخطيط المنتجات بدقة.
+        </p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">تصميم الشخصيات MD</span>
+          <span class="pillar-tag">سلع محدودة</span>
+          <span class="pillar-tag">تمويل جماعي</span>
+          <span class="pillar-tag">مدفوع بالبيانات</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PARTNERSHIP MODELS ── -->
+<section class="section reveal" id="models">
+  <div class="sec-head">
+    <p class="sec-label">النماذج</p>
+    <h2 class="sec-title">نماذج الشراكة</h2>
+  </div>
+
+  <div class="terminal-prompt">
+    <span class="ps">crew@meje </span><span style="color:var(--text-muted);">~ </span><span class="cmd">diff </span><span class="flag">models/revenue-share models/ip-transfer</span>
+  </div>
+
+  <div class="model-grid">
+    <div class="model-card">
+      <span class="model-card-badge a">MODEL A</span>
+      <h3 class="model-card-title">شراكة تقاسم الإيرادات</h3>
+      <ul class="model-card-items">
+        <li>لا تكاليف تطوير مسبقة — MEJE Works تتحمل الموارد والمخاطر</li>
+        <li>توزيع الإيرادات الصافية بنسبة متفق عليها بعد الإطلاق</li>
+        <li>توسيع الأعمال الثانوية المشتقة من IP الشخصيات بحرية</li>
+        <li>تقليل المخاطر من خلال نموذج موسمي لمدة 100 يوم</li>
+      </ul>
+    </div>
+    <div class="model-card">
+      <span class="model-card-badge b">MODEL B</span>
+      <h3 class="model-card-title">تطوير نقل IP</h3>
+      <ul class="model-card-items">
+        <li>المضي قدماً بتكلفة تطوير معقولة</li>
+        <li>جميع حقوق بناء العوالم والشخصيات والمنصة تُنقل إلى العميل</li>
+        <li>تحكم كامل في عملية المشروع بأكملها</li>
+        <li>استخدام وتوسيع حر بعد التسليم</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS FLOW ── -->
+<section class="section reveal" id="process">
+  <div class="sec-head">
+    <p class="sec-label">العملية</p>
+    <h2 class="sec-title">عملية التطوير</h2>
+  </div>
+
+  <div class="terminal-prompt">
+    <span class="ps">crew@meje </span><span style="color:var(--text-muted);">~ </span><span class="cmd">pipeline </span><span class="flag">--ip-dev --weeks=13</span>
+  </div>
+
+  <div class="flow-grid">
+    <div class="flow-step">
+      <p class="flow-step-week">WEEK 1–4</p>
+      <h4 class="flow-step-title">تحليل IP و<br>بناء العوالم</h4>
+      <p class="flow-step-desc">تحليل IP معمق<br>مسودة Setting Bible<br>المراجعة الأولى</p>
+    </div>
+    <div class="flow-step">
+      <p class="flow-step-week">WEEK 5–7</p>
+      <h4 class="flow-step-title">تصميم<br>الشخصيات</h4>
+      <p class="flow-step-desc">إنهاء بناء العوالم<br>تسليم صحيفة الشخصيات<br>المراجعة الثانية</p>
+    </div>
+    <div class="flow-step">
+      <p class="flow-step-week">WEEK 8–10</p>
+      <h4 class="flow-step-title">النموذج الأولي<br>للمنصة</h4>
+      <p class="flow-step-desc">إنهاء الشخصيات<br>تطوير أنشطة الفاندوم<br>المراجعة الثالثة</p>
+    </div>
+    <div class="flow-step">
+      <p class="flow-step-week">WEEK 11–13</p>
+      <h4 class="flow-step-title">الاختبار و<br>الإطلاق</h4>
+      <p class="flow-step-desc">اختبار ألفا/بيتا<br>الاستقرار<br>إطلاق الخدمة</p>
+    </div>
+  </div>
+
+  <div class="ascii-diagram" style="margin-top: 2px; text-align: center;">
+<span class="dim">──────</span> <span class="hl">13 WEEKS (~100 DAYS)</span> <span class="dim">──────────────────────────────</span>
+
+  <span class="hl">W1━━━━W4</span>    <span class="bl">W5━━W7</span>    <span class="gr">W8━━━W10</span>    <span class="hl">W11━━W13</span>
+  <span class="dim">│</span> تحليل IP <span class="dim">│</span> تصميم الشخصيات <span class="dim">│</span> النموذج الأولي  <span class="dim">│</span> الاختبار   <span class="dim">│</span>
+  <span class="dim">│</span> World-   <span class="dim">│</span> Design  <span class="dim">│</span> النشاط  <span class="dim">│</span> والإطلاق <span class="dim">│</span>
+  <span class="dim">│</span> building <span class="dim">│</span>         <span class="dim">│</span> Dev       <span class="dim">│</span>          <span class="dim">│</span>
+  <span class="dim">└─ R1 ──┘── R2 ──┘─── R3 ───┘── LAUNCH ─┘</span>
+
+  <span class="dim">نفس الجدول الزمني لدورة إعداد الألبوم →</span> <span class="hl">عملية البث الموسمية لمدة 100 يوم</span>
+  </div>
+</section>
+
+<!-- ── WHY MEJE ── -->
+<section class="section reveal" id="why">
+  <div class="sec-head">
+    <p class="sec-label">لماذا MEJE</p>
+    <h2 class="sec-title">لماذا تختار MEJE Works</h2>
+  </div>
+
+  <div class="pillar-grid">
+    <div class="pillar">
+      <span class="pillar-num" style="color:var(--green);">&#10003;</span>
+      <div>
+        <h3 class="pillar-title">فهم عميق واحترام لـ IP</h3>
+        <p class="pillar-desc">النجاح لا يعتمد على التكنولوجيا، بل على فهم عميق لـ IP والفاندوم. رئيسنا التنفيذي — رئيس بناء العوالم السابق في HYBE ومدير تطوير BTS WORLD — يقود كل مشروع شخصياً.</p>
+      </div>
+    </div>
+    <div class="pillar">
+      <span class="pillar-num" style="color:var(--green);">&#10003;</span>
+      <div>
+        <h3 class="pillar-title">مقاييس أداء فاندوم مُثبتة</h3>
+        <p class="pillar-desc">نظام نشاط فاندوم مُتحقق حقق معدل تحويل DAU بنسبة 41%، ومتوسط وقت جلسة ساعة و2 دقيقة، ومعدل تحويل مدفوع 33.5% على منصة حية.</p>
+      </div>
+    </div>
+    <div class="pillar">
+      <span class="pillar-num" style="color:var(--green);">&#10003;</span>
+      <div>
+        <h3 class="pillar-title">نموذج موسمي 100 يوم — بداية بدون مخاطر</h3>
+        <p class="pillar-desc">ابدأ بخفة مع حدث محدود، ثم قرر التوسع إلى الموسم 2 أو الإنهاء بناءً على 100 يوم من بيانات استجابة المعجبين. لا عبء عقد طويل الأجل، ولا مخاطر على صورة IP الخاص بك.</p>
+      </div>
+    </div>
+    <div class="pillar">
+      <span class="pillar-num" style="color:var(--green);">&#10003;</span>
+      <div>
+        <h3 class="pillar-title">وصول عالمي فوري بأكثر من 40 لغة</h3>
+        <p class="pillar-desc">الوصول إلى الفاندوم العالمي في وقت واحد دون تكاليف ترويج خارجية منفصلة. منصتنا القائمة على الويب تزيل حواجز تثبيت التطبيقات للوصول العالمي.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT CTA ── -->
+<section class="section reveal" id="contact">
+  <div class="sec-head">
+    <p class="sec-label">التواصل</p>
+    <h2 class="sec-title">استفسارات الشراكة</h2>
+  </div>
+
+  <div class="cta-block">
+    <div class="cta-text">
+      <h3 class="cta-title">ابدأ شراكة IP الخاصة بك</h3>
+      <p class="cta-desc">
+        نراجع خصائص وأهداف IP الخاص بك، ونناقش النطاق والميزانية،<br>
+        ثم نقدم اقتراحاً مخصصاً.
+      </p>
+    </div>
+    <div class="cta-buttons">
+      <a href="mailto:Contact@meje.kr" class="cta-btn primary">Contact@meje.kr &rarr;</a>
+      <a href="tel:0507-1420-1205" class="cta-btn secondary">0507-1420-1205</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p class="footer-logo">MEJE<span>.</span>KR</p>
+  <div class="footer-contact">
+    MEJE Works Corp. | Kim Dong-eun | 772-87-02365<br>
+    503, 217, Yeoksam-ro, Gangnam-gu, Seoul, South Korea | 0507-1420-1205
+  </div>
+  <div class="footer-links">
+    <a href="index.html">&larr; Homelarr; الرئيسية</a>
+    <a href="about.html">عن الشركة</a>
+    <a href="ceo.html">CEO</a>
+    <a href="works.html">الأعمال</a>
+  </div>
+  <p class="footer-copy">&copy; MEJE Works Corp. All Rights Reserved.</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

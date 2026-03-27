@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MEJE WORKS Development Projects — VANNEE World, Parrot Hospital Tycoon, Ghost Restaurant, Parrot Mart Tycoon, IdolDong World. Worldbuilding-based games & fandom platforms.">
+<title>آثار MEJE — Projects & Portfolio</title>
+<meta property="og:title" content="آثار MEJE — Projects & Portfolio">
+<meta property="og:description" content="VANNEE World, Parrot Hospital, Ghost Restaurant — Worldbuilding-based games & fandom platform projects">
+<meta property="og:image" content="https://meje.kr/img/og-cover.png">
+<meta property="og:url" content="https://meje.kr/fa/works.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="ko" href="https://meje.kr/works.html">
+<link rel="alternate" hreflang="fa" dir="rtl" href="https://meje.kr/fa/works.html">
+<link rel="alternate" hreflang="ja" href="https://meje.kr/ja/works.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://meje.kr/zh-tw/works.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://meje.kr/zh-cn/works.html">
+<link rel="alternate" hreflang="ar" href="https://meje.kr/ar/works.html">
+<link rel="alternate" hreflang="fa" href="https://meje.kr/fa/works.html">
+<link rel="alternate" hreflang="ur" href="https://meje.kr/ur/works.html">
+<link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+<link rel="apple-touch-icon" href="../img/logo.png">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;700&family=Noto+Sans+Arabic&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+/* ── LANGUAGE BAR ── */
+.lang-bar { display:flex; gap:8px; align-items:center; }
+.lang-bar a { font-family:var(--mono); font-size:10px; color:var(--text-dim); text-decoration:none; letter-spacing:0.04em; transition:color 0.2s; }
+.lang-bar a:hover { color:var(--text-sub); }
+.lang-bar a.active { color:var(--accent); }
+.lang-bar .sep { color:var(--text-dim); font-size:8px; opacity:0.4; }
+
+/* ── WORKS HERO ── */
+#works-hero {
+  max-width: 100%;
+  padding: 120px 40px 80px;
+  border-bottom: 1px solid var(--border-dim);
+  text-align: center;
+}
+
+.works-hero-badge {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--green);
+  border: 1px solid rgba(76,175,125,0.3);
+  padding: 3px 10px;
+  display: inline-block;
+  margin-bottom: 24px;
+  letter-spacing: 0.1em;
+  animation: fadeUp 0.8s ease both;
+}
+.works-hero-badge::before { content: '● '; }
+
+.works-hero-title {
+  font-family: var(--display);
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+  animation: fadeUp 0.8s ease 0.1s both;
+}
+
+.works-hero-desc {
+  font-family: var(--mono), var(--sans);
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 2;
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+
+/* ── PROJECT CARD ── */
+.project-card {
+  background: var(--bg-2);
+  border: 1px solid var(--border-dim);
+  padding: 48px 40px;
+  margin-bottom: 2px;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 48px;
+  align-items: start;
+  position: relative;
+  transition: background 0.2s;
+}
+.project-card:hover { background: var(--bg-3); }
+
+.project-card.is-dev {
+  border-left: 2px solid var(--accent-dim);
+}
+.project-card.is-live {
+  border-left: 2px solid var(--green);
+}
+
+.project-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.project-status {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  padding: 3px 10px;
+  display: inline-block;
+}
+.project-status.live {
+  color: var(--green);
+  border: 1px solid rgba(76,175,125,0.3);
+}
+.project-status.dev {
+  color: var(--accent);
+  border: 1px solid var(--accent-dim);
+}
+
+.project-type {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.project-title {
+  font-family: var(--display);
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.project-title-en {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.project-desc {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+
+.project-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.project-features li {
+  font-family: var(--mono), var(--sans);
+  font-size: 13px;
+  color: var(--text-dim);
+  padding: 8px 16px;
+  background: var(--bg);
+  border: 1px solid var(--border-dim);
+  transition: border-color 0.15s;
+}
+.project-features li:hover { border-color: var(--border); }
+.project-features li::before {
+  content: '› ';
+  color: var(--accent-dim);
+}
+
+.project-link {
+  display: inline-block;
+  margin-top: 16px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--accent-dim);
+  text-decoration: none;
+  border: 1px solid var(--border-dim);
+  padding: 6px 16px;
+  transition: all 0.2s;
+}
+.project-link:hover {
+  color: var(--accent);
+  border-color: var(--accent-dim);
+}
+
+/* ── PROJECT SIDEBAR (METRICS) ── */
+.project-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.project-metric {
+  background: var(--bg);
+  border: 1px solid var(--border-dim);
+  padding: 16px 20px;
+  text-align: center;
+}
+
+.project-metric-num {
+  font-family: var(--mono);
+  font-size: 22px;
+  color: var(--accent);
+  font-weight: 400;
+  display: block;
+  margin-bottom: 4px;
+}
+.project-metric-num.green { color: var(--green); }
+
+.project-metric-label {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.project-tag {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  border: 1px solid var(--border-dim);
+  padding: 2px 8px;
+}
+
+/* ── PROGRESS BAR ── */
+.progress-bar {
+  background: var(--bg);
+  border: 1px solid var(--border-dim);
+  padding: 12px 20px;
+}
+
+.progress-bar-label {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.progress-bar-track {
+  height: 3px;
+  background: var(--border-dim);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 1px;
+  background: var(--accent);
+  transition: width 1s ease;
+}
+.progress-bar-fill.green { background: var(--green); }
+
+/* ── TRILOGY LABEL ── */
+.trilogy-badge {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: #7a9fbf;
+  border: 1px solid rgba(122,159,191,0.3);
+  padding: 2px 8px;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 768px) {
+  #works-hero { padding: 100px 20px 60px; }
+  .project-card {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 32px 24px;
+  }
+  .project-sidebar { flex-direction: row; flex-wrap: wrap; }
+  .project-metric { flex: 1; min-width: 120px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">MEJE<span>.</span>KR</a>
+  <div class="lang-bar">
+    <a href="../works.html">KR</a><span class="sep">&middot;</span>
+    <a href="works.html">EN</a><span class="sep">&middot;</span>
+    <a href="../ja/works.html">JA</a><span class="sep">&middot;</span>
+    <a href="../zh-tw/works.html">繁</a><span class="sep">&middot;</span>
+    <a href="../zh-cn/works.html">简</a><span class="sep">&middot;</span>
+    <a href="../ar/works.html">AR</a><span class="sep">&middot;</span>
+    <a href="works.html" class="active">FA</a><span class="sep">&middot;</span>
+    <a href="../ur/works.html">UR</a>
+  </div>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">MENU</button>
+  <ul class="nav-links">
+    <li><a href="index.html">خانه</a></li>
+    <li><a href="about.html">درباره ما</a></li>
+    <li><a href="ceo.html">CEO</a></li>
+    <li><a href="works.html" class="active">آثار</a></li>
+    <li><a href="ip.html">IP</a></li>
+  </ul>
+  <span class="nav-badge">پروژه‌ها</span>
+</nav>
+
+<main>
+
+<!-- ── HERO ── -->
+<section id="works-hero">
+  <span class="works-hero-badge">MEJE Works</span>
+  <h1 class="works-hero-title">پروژه‌ها</h1>
+  <p class="works-hero-desc">
+    بازی‌های مبتنی بر جهان‌سازی، پلتفرم‌های فندوم و محتوای تعاملی.<br>
+    پروژه‌هایی که توسط MEJE Works طراحی و توسعه داده شده‌اند.
+  </p>
+</section>
+
+<!-- ── PROJECT LIST ── -->
+<section class="section reveal" id="projects" style="padding-top:48px;">
+  <div class="sec-head">
+    <p class="sec-label">پروژه‌ها</p>
+    <h2 class="sec-title">پروژه‌های توسعه</h2>
+  </div>
+
+  <div class="terminal-prompt">
+    <span class="ps">crew@meje </span><span style="color:var(--text-muted);">~ </span><span class="cmd">ls </span><span class="flag">projects/ --sort=status</span>
+  </div>
+
+  <!-- ═══ 01. 배니월드 VANNEE World ═══ -->
+  <div class="project-card is-live">
+    <div class="project-body">
+      <div class="project-header">
+        <span class="project-status live">● LIVE</span>
+        <span class="project-type">پلتفرم فندوم K-POP</span>
+      </div>
+      <h3 class="project-title">배니월드 VANNEE World</h3>
+      <p class="project-title-en">VANNEE World — فعالیت فندوم کاراکتر آیدل</p>
+      <p class="project-desc">
+        یک پلتفرم تعاملی دیجیتال فندوم ساخته‌شده برای گروه‌های آیدل K-POP.
+        طراحی‌شده با محتوای روزانه مبتنی بر جهان‌سازی (بیدار شدن، غذا دادن، خواب)
+        برای حداکثرسازی تعامل طرفداران و رشد ارگانیک از طریق بازاریابی غیرپولی.
+      </p>
+      <ul class="project-features">
+        <li>محتوای روزانه یکپارچه با جهان‌سازی گروه + فندوم</li>
+        <li>طراحی رشد ارگانیک مبتنی بر بازاریابی غیرپولی</li>
+        <li>مجموعه‌ها، کالای دیجیتال و کالای ثانویه</li>
+        <li>قیف فندوم: بیننده → تک‌فن → چندفن → اینفلوئنسر</li>
+      </ul>
+      <a href="https://vanneeworld.com/" target="_blank" rel="noopener" class="project-link">vanneeworld.com &rarr;</a>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-muted); margin-left:8px;">(سرویس پایان یافته · صفحه نمونه)</span>
+    </div>
+    <div class="project-sidebar">
+      <div class="project-metric">
+        <span class="project-metric-num green">43</span>
+        <span class="project-metric-label">کشور</span>
+      </div>
+      <div class="project-metric">
+        <span class="project-metric-num green">35.16%</span>
+        <span class="project-metric-label">حفظ D90</span>
+      </div>
+      <div class="project-metric">
+        <span class="project-metric-num green">33.5%</span>
+        <span class="project-metric-label">تبدیل پولی</span>
+      </div>
+      <div class="project-metric">
+        <span class="project-metric-num green">1h 02m</span>
+        <span class="project-metric-label">میانگین جلسه</span>
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">Web</span>
+        <span class="project-tag">Fandom</span>
+        <span class="project-tag">K-POP</span>
+        <span class="project-tag">Interactive</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 02. 앵무병원 타이쿤 Parrot Hospital Tycoon ═══ -->
+  <div class="project-card is-live">
+    <div class="project-body">
+      <div class="project-header">
+        <span class="project-status live">● LIVE</span>
+        <span class="project-type">شبیه‌سازی تایکون موبایل</span>
+        <span class="trilogy-badge">سه‌گانه طوطی #۱</span>
+      </div>
+      <h3 class="project-title">앵무병원 타이쿤 Parrot Hospital Tycoon</h3>
+      <p class="project-title-en">Parrot Hospital Tycoon</p>
+      <p class="project-desc">
+        یک شبیه‌سازی مدیریت بیمارستان با کاراکترهای طوطی.
+        مدیریت بیش از ۲۰ بیماری تخیلی — سردرد گربه، جهش آدم برفی، صاعقه — و
+        گسترش بیمارستان با امکانات درمانی.
+        جریان استراتژیک بیمار در ۴ نوع کارکن (پزشکان، پرستاران، کارکنان و نگهبانان) کلیدی است.
+      </p>
+      <ul class="project-features">
+        <li>بیش از ۲۰ بیماری تخیلی با سیستم‌های درمانی طنزآمیز</li>
+        <li>سیستم استرس بیمار، بیماران خشمگین و نگهبانان</li>
+        <li>گسترش نقشه جهان بر اساس درجه‌بندی ارزیابی بنیاد</li>
+        <li>سیستم راحتی و دکوراسیون مرتبط با پاداش درآمد</li>
+      </ul>
+      <a href="https://play.google.com/store/apps/details?id=com.MEJEWorks.ParrotHospital" target="_blank" rel="noopener" class="project-link">Google Play &rarr;</a>
+    </div>
+    <div class="project-sidebar">
+      <div class="project-metric">
+        <span class="project-metric-num green">169</span>
+        <span class="project-metric-label">کشور</span>
+      </div>
+      <div class="project-metric">
+        <span class="project-metric-num green">~50K</span>
+        <span class="project-metric-label">دانلود</span>
+      </div>
+      <div class="project-metric">
+        <span class="project-metric-num green">5.0</span>
+        <span class="project-metric-label">Google Play ★ (KR)</span>
+      </div>
+      <div class="project-metric">
+        <span class="project-metric-num green">0.19%</span>
+        <span class="project-metric-label">نرخ خرابی</span>
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">Mobile</span>
+        <span class="project-tag">تایکون</span>
+        <span class="project-tag">شبیه‌سازی</span>
+        <span class="project-tag">جهانی</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 03. 혼령식당 Ghost Restaurant ═══ -->
+  <div class="project-card is-dev">
+    <div class="project-body">
+      <div class="project-header">
+        <span class="project-status dev">◆ IN DEV</span>
+        <span class="project-type">پازل ادغام موبایل + داستان RPG</span>
+      </div>
+      <h3 class="project-title">혼령식당 Ghost Restaurant</h3>
+      <p class="project-title-en">Ghost Restaurant — فانتزی شفابخش غذای روح کره‌ای</p>
+      <p class="project-desc">
+        رستوران هانوک مادربزرگ را به ارث ببرید: در روز مواد را برداشت، تخمیر و آشپزی کنید (پازل ادغام)،
+        سپس در شب غذای روح به مهمانان ارواح کینه‌توز سرو کنید — یک بازی دو جهانی.
+        ارائه فرهنگ کره‌ای از طریق ۸۰ قسمت آمنیبوس از دوران جوسئون تا مدرن.
+      </p>
+      <ul class="project-features">
+        <li>سیستم ادغام دوگانه روز/شب (منابع اقتصادی + ابزارهای شفابخش)</li>
+        <li>۸۰ قسمت آمنیبوس با داستان‌سرایی فرهنگی کره‌ای</li>
+        <li>ابربومی‌سازی هوش مصنوعی با پشتیبانی همزمان ۷۰ زبان</li>
+        <li>آماده‌سازی گسترش IP وبتون و وب‌رمان</li>
+      </ul>
+    </div>
+    <div class="project-sidebar">
+      <div class="progress-bar">
+        <div class="progress-bar-label"><span>برنامه‌ریزی / سناریو</span><span>80%</span></div>
+        <div class="progress-bar-track"><div class="progress-bar-fill" style="width:80%"></div></div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar-label"><span>گرافیک</span><span>75%</span></div>
+        <div class="progress-bar-track"><div class="progress-bar-fill" style="width:75%"></div></div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar-label"><span>برنامه‌نویسی</span><span>65%</span></div>
+        <div class="progress-bar-track"><div class="progress-bar-fill" style="width:65%"></div></div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar-label"><span>صدا</span><span>60%</span></div>
+        <div class="progress-bar-track"><div class="progress-bar-fill" style="width:60%"></div></div>
+      </div>
+      <div class="project-metric">
+        <span class="project-metric-num">2026.11</span>
+        <span class="project-metric-label">تاریخ عرضه هدف</span>
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">iOS</span>
+        <span class="project-tag">Android</span>
+        <span class="project-tag">Merge</span>
+        <span class="project-tag">Story RPG</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 04. 앵무마트 타이쿤 Parrot Mart Tycoon ═══ -->
+  <div class="project-card is-dev">
+    <div class="project-body">
+      <div class="project-header">
+        <span class="project-status dev">◆ IN DEV</span>
+        <span class="project-type">شبیه‌سازی تایکون موبایل</span>
+        <span class="trilogy-badge">سه‌گانه طوطی #۲</span>
+      </div>
+      <h3 class="project-title">앵무마트 타이쿤 Parrot Mart Tycoon</h3>
+      <p class="project-title-en">Parrot Mart Tycoon</p>
+      <p class="project-desc">
+        دنباله Parrot Hospital Tycoon. ساخت و مدیریت یک فروشگاه بزرگ با کاراکترهای طوطی.
+        از نمایش محصول، خدمات مشتری، صندوق، لجستیک و انبارداری، پارکینگ،
+        رویدادهای سرقت، تا تبلیغات — با سیستم مدیریت چندلایه عمیق‌تر نسبت به نسخه قبلی.
+      </p>
+      <ul class="project-features">
+        <li>۵ سطح فروشگاه، هر کدام با استراتژی‌های میدانی متمایز</li>
+        <li>سیستم خودکار لجستیک و انبار</li>
+        <li>پارکینگ برای جذب مشتریان عمده‌خرید</li>
+        <li>مدیریت استقامت/خستگی کارکنان با ۱۲ سطح ارتقاء تجهیزات</li>
+        <li>مدل درآمد خرید درون‌برنامه‌ای بهبودیافته (نسبت به نسخه قبلی)</li>
+      </ul>
+    </div>
+    <div class="project-sidebar">
+      <div class="progress-bar">
+        <div class="progress-bar-label"><span>توسعه کلی</span><span>65%</span></div>
+        <div class="progress-bar-track"><div class="progress-bar-fill" style="width:65%"></div></div>
+      </div>
+      <div class="project-metric">
+        <span class="project-metric-num">2026.08</span>
+        <span class="project-metric-label">تاریخ عرضه هدف</span>
+      </div>
+      <div class="project-metric">
+        <span class="project-metric-num">169</span>
+        <span class="project-metric-label">کشورهای هدف</span>
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">Mobile</span>
+        <span class="project-tag">تایکون</span>
+        <span class="project-tag">شبیه‌سازی</span>
+        <span class="project-tag">IAP</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 05. 아이동월드 IdolDong World ═══ -->
+  <div class="project-card is-dev">
+    <div class="project-body">
+      <div class="project-header">
+        <span class="project-status dev">◆ IN DEV</span>
+        <span class="project-type">پلتفرم تعاملی</span>
+      </div>
+      <h3 class="project-title">아이동월드 IdolDong World</h3>
+      <p class="project-title-en">IdolDong World</p>
+      <p class="project-desc">
+        یک پلتفرم تعاملی فندوم آیدل نسل بعدی که فناوری و
+        تخصص طراحی فندوم VANNEE World را گسترش می‌دهد.
+        یکپارچه‌سازی فعالیت‌های کاراکتر مبتنی بر جهان‌سازی، جوامع فندوم و کالای دیجیتال.
+      </p>
+      <ul class="project-features">
+        <li>پلتفرم فندوم گسترش‌یافته ساخته‌شده بر پایه VANNEE World</li>
+        <li>سیستم فعالیت فندوم کاراکتر آیدل</li>
+        <li>طراحی‌شده برای پشتیبانی جهانی چندگروهی</li>
+      </ul>
+    </div>
+    <div class="project-sidebar">
+      <div class="progress-bar">
+        <div class="progress-bar-label"><span>برنامه‌ریزی</span><span>&mdash;</span></div>
+        <div class="progress-bar-track"><div class="progress-bar-fill" style="width:15%"></div></div>
+      </div>
+      <div class="project-metric">
+        <span class="project-metric-num">TBD</span>
+        <span class="project-metric-label">تاریخ عرضه هدف</span>
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">Web</span>
+        <span class="project-tag">Fandom</span>
+        <span class="project-tag">K-POP</span>
+        <span class="project-tag">Multi-Group</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p class="footer-logo">MEJE<span>.</span>KR</p>
+  <div class="footer-contact">
+    MEJE Works Corp. | Kim Dong-eun | 772-87-02365<br>
+    503, 217, Yeoksam-ro, Gangnam-gu, Seoul, South Korea | 0507-1420-1205
+  </div>
+  <div class="footer-links">
+    <a href="index.html">&larr; خانه</a>
+    <a href="about.html">درباره ما</a>
+    <a href="ceo.html">CEO</a>
+    <a href="ip.html">IP</a>
+  </div>
+  <p class="footer-copy">&copy; MEJE Works Corp. All Rights Reserved.</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

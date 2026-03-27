@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MEJE WORKS 開発プロジェクト — 배니월드 VANNEE World、앵무병원 타이쿤、혼령식당、앵무마트 타이쿤、아이동월드。世界観構築ベースのゲーム＆ファンダムプラットフォーム。">
+<title>Works of MEJE — プロジェクト＆ポートフォリオ</title>
+<meta property="og:title" content="Works of MEJE — プロジェクト＆ポートフォリオ">
+<meta property="og:description" content="VANNEE World、Parrot Hospital、Ghost Restaurant — 世界観構築ベースのゲーム＆ファンダムプラットフォームプロジェクト">
+<meta property="og:image" content="https://meje.kr/img/og-cover.png">
+<meta property="og:url" content="https://meje.kr/ja/works.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="ko" href="https://meje.kr/works.html">
+<link rel="alternate" hreflang="en" href="https://meje.kr/en/works.html">
+<link rel="alternate" hreflang="ja" href="https://meje.kr/ja/works.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://meje.kr/zh-tw/works.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://meje.kr/zh-cn/works.html">
+<link rel="alternate" hreflang="ar" href="https://meje.kr/ar/works.html">
+<link rel="alternate" hreflang="fa" href="https://meje.kr/fa/works.html">
+<link rel="alternate" hreflang="ur" href="https://meje.kr/ur/works.html">
+<link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+<link rel="apple-touch-icon" href="../img/logo.png">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+:root { --sans: 'Noto Sans JP', 'Pretendard', 'Noto Sans KR', sans-serif; --display: 'DM Sans', 'Noto Sans JP', 'Pretendard', sans-serif; }
+
+/* ── LANGUAGE BAR ── */
+.lang-bar { display:flex; gap:8px; align-items:center; }
+.lang-bar a { font-family:var(--mono); font-size:10px; color:var(--text-dim); text-decoration:none; letter-spacing:0.04em; transition:color 0.2s; }
+.lang-bar a:hover { color:var(--text-sub); }
+.lang-bar a.active { color:var(--accent); }
+.lang-bar .sep { color:var(--text-dim); font-size:8px; opacity:0.4; }
+
+/* ── WORKS HERO ── */
+#works-hero {
+  max-width: 100%;
+  padding: 120px 40px 80px;
+  border-bottom: 1px solid var(--border-dim);
+  text-align: center;
+}
+
+.works-hero-badge {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--green);
+  border: 1px solid rgba(76,175,125,0.3);
+  padding: 3px 10px;
+  display: inline-block;
+  margin-bottom: 24px;
+  letter-spacing: 0.1em;
+  animation: fadeUp 0.8s ease both;
+}
+.works-hero-badge::before { content: '● '; }
+
+.works-hero-title {
+  font-family: var(--display);
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+  animation: fadeUp 0.8s ease 0.1s both;
+}
+
+.works-hero-desc {
+  font-family: var(--mono), var(--sans);
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 2;
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+
+/* ── PROJECT CARD ── */
+.project-card {
+  background: var(--bg-2);
+  border: 1px solid var(--border-dim);
+  padding: 48px 40px;
+  margin-bottom: 2px;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 48px;
+  align-items: start;
+  position: relative;
+  transition: background 0.2s;
+}
+.project-card:hover { background: var(--bg-3); }
+
+.project-card.is-dev {
+  border-left: 2px solid var(--accent-dim);
+}
+.project-card.is-live {
+  border-left: 2px solid var(--green);
+}
+
+.project-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.project-status {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  padding: 3px 10px;
+  display: inline-block;
+}
+.project-status.live {
+  color: var(--green);
+  border: 1px solid rgba(76,175,125,0.3);
+}
+.project-status.dev {
+  color: var(--accent);
+  border: 1px solid var(--accent-dim);
+}
+
+.project-type {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.project-title {
+  font-family: var(--display);
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.project-title-en {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.project-desc {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+
+.project-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.project-features li {
+  font-family: var(--mono), var(--sans);
+  font-size: 13px;
+  color: var(--text-dim);
+  padding: 8px 16px;
+  background: var(--bg);
+  border: 1px solid var(--border-dim);
+  transition: border-color 0.15s;
+}
+.project-features li:hover { border-color: var(--border); }
+.project-features li::before {
+  content: '› ';
+  color: var(--accent-dim);
+}
+
+.project-link {
+  display: inline-block;
+  margin-top: 16px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--accent-dim);
+  text-decoration: none;
+  border: 1px solid var(--border-dim);
+  padding: 6px 16px;
+  transition: all 0.2s;
+}
+.project-link:hover {
+  color: var(--accent);
+  border-color: var(--accent-dim);
+}
+
+/* ── PROJECT SIDEBAR (METRICS) ── */
+.project-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.project-metric {
+  background: var(--bg);
+  border: 1px solid var(--border-dim);
+  padding: 16px 20px;
+  text-align: center;
+}
+
+.project-metric-num {
+  font-family: var(--mono);
+  font-size: 22px;
+  color: var(--accent);
+  font-weight: 400;
+  display: block;
+  margin-bottom: 4px;
+}
+.project-metric-num.green { color: var(--green); }
+
+.project-metric-label {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.project-tag {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  border: 1px solid var(--border-dim);
+  padding: 2px 8px;
+}
+
+/* ── PROGRESS BAR ── */
+.progress-bar {
+  background: var(--bg);
+  border: 1px solid var(--border-dim);
+  padding: 12px 20px;
+}
+
+.progress-bar-label {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.progress-bar-track {
+  height: 3px;
+  background: var(--border-dim);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 1px;
+  background: var(--accent);
+  transition: width 1s ease;
+}
+.progress-bar-fill.green { background: var(--green); }
+
+/* ── TRILOGY LABEL ── */
+.trilogy-badge {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: #7a9fbf;
+  border: 1px solid rgba(122,159,191,0.3);
+  padding: 2px 8px;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 768px) {
+  #works-hero { padding: 100px 20px 60px; }
+  .project-card {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 32px 24px;
+  }
+  .project-sidebar { flex-direction: row; flex-wrap: wrap; }
+  .project-metric { flex: 1; min-width: 120px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">MEJE<span>.</span>KR</a>
+  <div class="lang-bar">
+    <a href="../works.html">KR</a><span class="sep">&middot;</span>
+    <a href="../en/works.html">EN</a><span class="sep">&middot;</span>
+    <a href="works.html" class="active">JA</a><span class="sep">&middot;</span>
+    <a href="../zh-tw/works.html">繁</a><span class="sep">&middot;</span>
+    <a href="../zh-cn/works.html">简</a><span class="sep">&middot;</span>
+    <a href="../ar/works.html">AR</a><span class="sep">&middot;</span>
+    <a href="../fa/works.html">FA</a><span class="sep">&middot;</span>
+    <a href="../ur/works.html">UR</a>
+  </div>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">MENU</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="ceo.html">CEO</a></li>
+    <li><a href="works.html" class="active">Works</a></li>
+    <li><a href="ip.html">IP</a></li>
+  </ul>
+  <span class="nav-badge">プロジェクト</span>
+</nav>
+
+<main>
+
+<!-- ── HERO ── -->
+<section id="works-hero">
+  <span class="works-hero-badge">MEJE Works</span>
+  <h1 class="works-hero-title">プロジェクト</h1>
+  <p class="works-hero-desc">
+    世界観構築ベースのゲーム、ファンダムプラットフォーム、インタラクティブコンテンツ。<br>
+    MEJE Worksが企画・開発したプロジェクトです。
+  </p>
+</section>
+
+<!-- ── PROJECT LIST ── -->
+<section class="section reveal" id="projects" style="padding-top:48px;">
+  <div class="sec-head">
+    <p class="sec-label">Projects</p>
+    <h2 class="sec-title">開発プロジェクト</h2>
+  </div>
+
+  <div class="terminal-prompt">
+    <span class="ps">crew@meje </span><span style="color:var(--text-muted);">~ </span><span class="cmd">ls </span><span class="flag">projects/ --sort=status</span>
+  </div>
+
+  <!-- ═══ 01. 배니월드 VANNEE World ═══ -->
+  <div class="project-card is-live">
+    <div class="project-body">
+      <div class="project-header">
+        <span class="project-status live">● LIVE</span>
+        <span class="project-type">K-POPファンダムプラットフォーム</span>
+      </div>
+      <h3 class="project-title">배니월드 VANNEE World</h3>
+      <p class="project-title-en">VANNEE World — アイドルキャラクターファンダムアクティビティ</p>
+      <p class="project-desc">
+        K-POPアイドルグループ向けに構築されたデジタルインタラクティブファンダムプラットフォームです。
+        世界観ベースのデイリーコンテンツ（起床、お世話、就寝ルーティン）を通じて
+        ファンのエンゲージメントを最大化し、非課金マーケティングによるオーガニックグロースを実現します。
+      </p>
+      <ul class="project-features">
+        <li>グループ＋ファンダムの世界観と連動したデイリーコンテンツ</li>
+        <li>非課金マーケティングによるオーガニックグロース設計</li>
+        <li>コレクション、デジタルグッズ、2次グッズ展開</li>
+        <li>ファンダムファネル：視聴者 &rarr; 単推し &rarr; 多推し &rarr; インフルエンサー</li>
+      </ul>
+      <a href="https://vanneeworld.com/" target="_blank" rel="noopener" class="project-link">vanneeworld.com &rarr;</a>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-muted); margin-left:8px;">（サービス終了 &middot; サンプルページ）</span>
+    </div>
+    <div class="project-sidebar">
+      <div class="project-metric">
+        <span class="project-metric-num green">43</span>
+        <span class="project-metric-label">対応国数</span>
+      </div>
+      <div class="project-metric">
+        <span class="project-metric-num green">35.16%</span>
+        <span class="project-metric-label">D90リテンション</span>
+      </div>
+      <div class="project-metric">
+        <span class="project-metric-num green">33.5%</span>
+        <span class="project-metric-label">課金コンバージョン</span>
+      </div>
+      <div class="project-metric">
+        <span class="project-metric-num green">1h 02m</span>
+        <span class="project-metric-label">平均セッション</span>
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">Web</span>
+        <span class="project-tag">Fandom</span>
+        <span class="project-tag">K-POP</span>
+        <span class="project-tag">Interactive</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 02. 앵무병원 타이쿤 Parrot Hospital Tycoon ═══ -->
+  <div class="project-card is-live">
+    <div class="project-body">
+      <div class="project-header">
+        <span class="project-status live">● LIVE</span>
+        <span class="project-type">モバイルシミュレーションタイクーン</span>
+        <span class="trilogy-badge">Parrot Trilogy #1</span>
+      </div>
+      <h3 class="project-title">앵무병원 타이쿤 Parrot Hospital Tycoon</h3>
+      <p class="project-title-en">Parrot Hospital Tycoon</p>
+      <p class="project-desc">
+        オウムキャラクターが活躍する病院経営シミュレーションです。
+        猫頭痛、雪だるま変異、雷撃など20以上のユニークな病気を治療しながら、
+        治療施設を拡張していきます。
+        4職種（医師、看護師、スタッフ、警備員）の戦略的な患者フロー管理が攻略の鍵です。
+      </p>
+      <ul class="project-features">
+        <li>20以上の架空の病気とユーモラスな治療システム</li>
+        <li>患者ストレスシステム、暴走する患者と警備員</li>
+        <li>財団評価グレードに基づくワールドマップ拡張</li>
+        <li>快適性＆インテリアシステムと収益ボーナスの連動</li>
+      </ul>
+      <a href="https://play.google.com/store/apps/details?id=com.MEJEWorks.ParrotHospital" target="_blank" rel="noopener" class="project-link">Google Play &rarr;</a>
+    </div>
+    <div class="project-sidebar">
+      <div class="project-metric">
+        <span class="project-metric-num green">169</span>
+        <span class="project-metric-label">対応国数</span>
+      </div>
+      <div class="project-metric">
+        <span class="project-metric-num green">~50K</span>
+        <span class="project-metric-label">ダウンロード数</span>
+      </div>
+      <div class="project-metric">
+        <span class="project-metric-num green">5.0</span>
+        <span class="project-metric-label">Google Play ★（KR）</span>
+      </div>
+      <div class="project-metric">
+        <span class="project-metric-num green">0.19%</span>
+        <span class="project-metric-label">クラッシュ率</span>
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">Mobile</span>
+        <span class="project-tag">Tycoon</span>
+        <span class="project-tag">Simulation</span>
+        <span class="project-tag">Global</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 03. 혼령식당 Ghost Restaurant ═══ -->
+  <div class="project-card is-dev">
+    <div class="project-body">
+      <div class="project-header">
+        <span class="project-status dev">◆ IN DEV</span>
+        <span class="project-type">モバイル マージパズル＋ストーリーRPG</span>
+      </div>
+      <h3 class="project-title">혼령식당 Ghost Restaurant</h3>
+      <p class="project-title-en">Ghost Restaurant — K-Foodソウルヒーリングファンタジー</p>
+      <p class="project-desc">
+        祖母から受け継いだ韓屋レストランで、昼は食材を収穫・発酵・調理し（マージパズル）、
+        夜は恨みを抱えた幽霊のお客様にソウルフードを提供する、
+        二つの世界を行き来するゲームです。
+        朝鮮時代から現代まで、80話のオムニバスエピソードで韓国文化を体験できます。
+      </p>
+      <ul class="project-features">
+        <li>昼夜デュアルマージシステム（経済リソース＋ヒーリングツール）</li>
+        <li>韓国文化ストーリーテリングによる80話のオムニバスエピソード</li>
+        <li>AIハイパーローカライゼーションで70言語同時対応</li>
+        <li>ウェブトゥーン・ウェブ小説へのIP展開を準備中</li>
+      </ul>
+    </div>
+    <div class="project-sidebar">
+      <div class="progress-bar">
+        <div class="progress-bar-label"><span>企画 / シナリオ</span><span>80%</span></div>
+        <div class="progress-bar-track"><div class="progress-bar-fill" style="width:80%"></div></div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar-label"><span>グラフィックス</span><span>75%</span></div>
+        <div class="progress-bar-track"><div class="progress-bar-fill" style="width:75%"></div></div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar-label"><span>プログラミング</span><span>65%</span></div>
+        <div class="progress-bar-track"><div class="progress-bar-fill" style="width:65%"></div></div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar-label"><span>サウンド</span><span>60%</span></div>
+        <div class="progress-bar-track"><div class="progress-bar-fill" style="width:60%"></div></div>
+      </div>
+      <div class="project-metric">
+        <span class="project-metric-num">2026.11</span>
+        <span class="project-metric-label">リリース目標</span>
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">iOS</span>
+        <span class="project-tag">Android</span>
+        <span class="project-tag">Merge</span>
+        <span class="project-tag">Story RPG</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 04. 앵무마트 타이쿤 Parrot Mart Tycoon ═══ -->
+  <div class="project-card is-dev">
+    <div class="project-body">
+      <div class="project-header">
+        <span class="project-status dev">◆ IN DEV</span>
+        <span class="project-type">モバイルシミュレーションタイクーン</span>
+        <span class="trilogy-badge">Parrot Trilogy #2</span>
+      </div>
+      <h3 class="project-title">앵무마트 타이쿤 Parrot Mart Tycoon</h3>
+      <p class="project-title-en">Parrot Mart Tycoon</p>
+      <p class="project-desc">
+        Parrot Hospital Tycoonの続編です。オウムキャラクターで大型マートを建設・経営します。
+        商品陳列、接客、レジ、物流・倉庫管理、駐車場、
+        万引きイベント、プロモーションまで — 前作を上回る多層的な経営システムを搭載しています。
+      </p>
+      <ul class="project-features">
+        <li>5段階のマートレベル、各段階で異なるフィールド戦略</li>
+        <li>自動物流・倉庫補充システム</li>
+        <li>駐車場でまとめ買い顧客を誘致</li>
+        <li>スタッフの体力・疲労管理と12段階の施設アップグレード</li>
+        <li>改善されたアプリ内課金収益モデル（前作比強化）</li>
+      </ul>
+    </div>
+    <div class="project-sidebar">
+      <div class="progress-bar">
+        <div class="progress-bar-label"><span>全体開発</span><span>65%</span></div>
+        <div class="progress-bar-track"><div class="progress-bar-fill" style="width:65%"></div></div>
+      </div>
+      <div class="project-metric">
+        <span class="project-metric-num">2026.08</span>
+        <span class="project-metric-label">リリース目標</span>
+      </div>
+      <div class="project-metric">
+        <span class="project-metric-num">169</span>
+        <span class="project-metric-label">対象国数</span>
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">Mobile</span>
+        <span class="project-tag">Tycoon</span>
+        <span class="project-tag">Simulation</span>
+        <span class="project-tag">IAP</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 05. 아이동월드 IdolDong World ═══ -->
+  <div class="project-card is-dev">
+    <div class="project-body">
+      <div class="project-header">
+        <span class="project-status dev">◆ IN DEV</span>
+        <span class="project-type">インタラクティブプラットフォーム</span>
+      </div>
+      <h3 class="project-title">아이동월드 IdolDong World</h3>
+      <p class="project-title-en">IdolDong World</p>
+      <p class="project-desc">
+        VANNEE Worldの技術とファンダムデザインのノウハウを発展させた、
+        次世代アイドルファンダムインタラクティブプラットフォームです。
+        世界観ベースのキャラクターアクティビティ、ファンダムコミュニティ、デジタルグッズを統合しています。
+      </p>
+      <ul class="project-features">
+        <li>VANNEE Worldの基盤を拡張したファンダムプラットフォーム</li>
+        <li>アイドルキャラクターファンダムアクティビティシステム</li>
+        <li>グローバルマルチグループ対応設計</li>
+      </ul>
+    </div>
+    <div class="project-sidebar">
+      <div class="progress-bar">
+        <div class="progress-bar-label"><span>企画</span><span>&mdash;</span></div>
+        <div class="progress-bar-track"><div class="progress-bar-fill" style="width:15%"></div></div>
+      </div>
+      <div class="project-metric">
+        <span class="project-metric-num">TBD</span>
+        <span class="project-metric-label">リリース目標</span>
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">Web</span>
+        <span class="project-tag">Fandom</span>
+        <span class="project-tag">K-POP</span>
+        <span class="project-tag">Multi-Group</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p class="footer-logo">MEJE<span>.</span>KR</p>
+  <div class="footer-contact">
+    MEJE Works Corp. | Kim Dong-eun | 772-87-02365<br>
+    503, 217, Yeoksam-ro, Gangnam-gu, Seoul, South Korea | 0507-1420-1205
+  </div>
+  <div class="footer-links">
+    <a href="index.html">&larr; Home</a>
+    <a href="about.html">About</a>
+    <a href="ceo.html">CEO</a>
+    <a href="ip.html">IP</a>
+  </div>
+  <p class="footer-copy">&copy; MEJE Works Corp. All Rights Reserved.</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

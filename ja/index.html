@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEJE Works — 世界観を創る人々のスタジオ</title>
+<meta name="description" content="IP戦略 · K-Contents · ファンダムデザイン · AIテクノロジー。MEJE Worksは世界観ベースのIP戦略スタジオです。">
+<meta property="og:title" content="MEJE Works — 世界観を創る人々のスタジオ">
+<meta property="og:description" content="IP戦略 · K-Contents · ファンダムデザイン · AIテクノロジー">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://meje.kr/ja/">
+<link rel="alternate" hreflang="ko" href="https://meje.kr/">
+<link rel="alternate" hreflang="en" href="https://meje.kr/en/">
+<link rel="alternate" hreflang="ja" href="https://meje.kr/ja/">
+<link rel="alternate" hreflang="zh-Hant" href="https://meje.kr/zh-tw/">
+<link rel="alternate" hreflang="zh-Hans" href="https://meje.kr/zh-cn/">
+<link rel="alternate" hreflang="ar" href="https://meje.kr/ar/">
+<link rel="alternate" hreflang="fa" href="https://meje.kr/fa/">
+<link rel="alternate" hreflang="ur" href="https://meje.kr/ur/">
+<link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+<link rel="apple-touch-icon" href="../img/logo.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #080808;
+  --bg-2:     #0f0f0f;
+  --surface:  #1a1a1a;
+  --border:   #2a2a2a;
+  --text:     #f0f0f0;
+  --text-sub: #aaa;
+  --text-dim: #777;
+  --accent:   #c9a84c;
+  --green:    #4caf7d;
+  --mono:     'JetBrains Mono', 'Courier New', monospace;
+  --sans:     'Noto Sans JP', 'Pretendard', 'Noto Sans KR', sans-serif;
+  --display:  'DM Sans', 'Noto Sans JP', 'Pretendard', sans-serif;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── NOISE TEXTURE ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── LAYOUT ── */
+section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12vh 8vw;
+  position: relative;
+}
+
+section.half { min-height: 60vh; }
+section.auto { min-height: auto; padding: 8vh 8vw; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top:0; left:0; right:0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 8vw;
+  z-index: 100;
+  background: rgba(8,8,8,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.nav-logo {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav-links { display:flex; gap:28px; align-items:center; }
+.nav-links a {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-sub);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--accent); }
+
+/* ── LANGUAGE BAR ── */
+.lang-bar { display:flex; gap:8px; align-items:center; }
+.lang-bar a { font-family:var(--mono); font-size:10px; color:var(--text-dim); text-decoration:none; letter-spacing:0.04em; transition:color 0.2s; }
+.lang-bar a:hover { color:var(--text-sub); }
+.lang-bar a.active { color:var(--accent); }
+.lang-bar .sep { color:var(--text-dim); font-size:8px; opacity:0.4; }
+
+/* ── HERO ── */
+.hero { justify-content: center; align-items: center; text-align: center; }
+
+.hero-logo {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(48px, 10vw, 120px);
+  letter-spacing: 0.2em;
+  color: var(--text);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.2s forwards;
+}
+
+.hero-tagline {
+  font-size: clamp(16px, 2.5vw, 24px);
+  color: var(--text-sub);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.5s forwards;
+}
+
+.hero-prompt {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text-dim);
+  opacity: 0;
+  animation: fadeUp 1s ease 0.8s forwards;
+}
+.hero-prompt .hl { color: var(--accent); }
+
+.scroll-hint {
+  position: absolute;
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.2em;
+  animation: pulse 2.5s ease infinite;
+}
+
+/* ── SECTION TITLES ── */
+.sec-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.sec-title {
+  font-family: var(--display);
+  font-size: clamp(28px, 5vw, 56px);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.sec-desc {
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: var(--text-sub);
+  line-height: 1.8;
+  max-width: 640px;
+}
+
+/* ── WHAT WE DO ── */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: 64px;
+}
+.pillar {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  padding: 48px 32px;
+  transition: border-color 0.3s, background 0.3s;
+}
+.pillar:hover {
+  border-color: var(--accent);
+  background: rgba(201,168,76,0.03);
+}
+.pillar-icon {
+  font-family: var(--mono);
+  font-size: 24px;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.pillar-title {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.pillar-desc {
+  font-size: 13px;
+  color: var(--text-sub);
+  line-height: 1.7;
+}
+
+/* ── PROJECTS ── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 64px;
+}
+.project-card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  padding: 48px 32px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s;
+}
+.project-card:hover { border-color: var(--accent); }
+
+.project-status {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.project-status.live { color: var(--green); }
+.project-status.dev { color: var(--accent); }
+.project-status.ended { color: var(--text-dim); }
+
+.project-title {
+  font-family: var(--display);
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.project-genre {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+.project-desc {
+  font-size: 14px;
+  color: var(--text-sub);
+  line-height: 1.7;
+  flex: 1;
+}
+.project-link {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--accent);
+  text-decoration: none;
+  margin-top: 24px;
+  letter-spacing: 0.06em;
+}
+.project-link:hover { text-decoration: underline; }
+
+/* ── NUMBERS ── */
+.numbers-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: 64px;
+}
+.number-cell {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  padding: 48px 32px;
+  text-align: center;
+}
+.number-value {
+  font-family: var(--display);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.number-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-sub);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ── ABOUT BRIEF ── */
+.about-brief {
+  max-width: 720px;
+}
+.about-brief .cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--accent);
+  padding: 12px 28px;
+  letter-spacing: 0.06em;
+  transition: background 0.3s, color 0.3s;
+}
+.about-brief .cta:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* ── FOOTER ── */
+.landing-footer {
+  min-height: auto;
+  padding: 6vh 8vw;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.footer-company {
+  font-family: var(--display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.1em;
+}
+.footer-info {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+.footer-info a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.footer-info a:hover { text-decoration: underline; }
+
+.footer-right {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+.footer-right a {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+}
+.footer-right a:hover { color: var(--text-sub); }
+
+.footer-copy {
+  width: 100%;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity:0.4; }
+  50%      { opacity:0.8; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  section { padding: 10vh 6vw; }
+  .pillars { grid-template-columns: 1fr 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .numbers-grid { grid-template-columns: 1fr 1fr; }
+  .landing-footer { flex-direction: column; }
+  .nav-links { gap: 16px; }
+}
+@media (max-width: 480px) {
+  .pillars { grid-template-columns: 1fr; }
+  .numbers-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="../index.html" class="nav-logo">MEJE.KR</a>
+  <div class="lang-bar">
+    <a href="../index.html">KR</a><span class="sep">&middot;</span>
+    <a href="../en/index.html">EN</a><span class="sep">&middot;</span>
+    <a href="index.html" class="active">JA</a><span class="sep">&middot;</span>
+    <a href="../zh-tw/index.html">繁</a><span class="sep">&middot;</span>
+    <a href="../zh-cn/index.html">简</a><span class="sep">&middot;</span>
+    <a href="../ar/index.html">AR</a><span class="sep">&middot;</span>
+    <a href="../fa/index.html">FA</a><span class="sep">&middot;</span>
+    <a href="../ur/index.html">UR</a>
+  </div>
+  <div class="nav-links">
+    <a href="#projects">プロジェクト</a>
+    <a href="#about">紹介</a>
+    <a href="../tmi.html">TMI</a>
+    <a href="mailto:Contact@meje.kr">お問い合わせ</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-logo">MEJE</div>
+  <p class="hero-tagline">世界観を創る人々のスタジオ</p>
+  <p class="hero-prompt"><span class="hl">$</span> IP Strategy · K-Contents · Fandom Design · AI</p>
+  <div class="scroll-hint">SCROLL &darr;</div>
+</section>
+
+<!-- ── WHAT WE DO ── -->
+<section class="half reveal">
+  <p class="sec-label">// what_we_do</p>
+  <h2 class="sec-title">世界を創る。</h2>
+  <p class="sec-desc">
+    コンテンツIPの世界観を設計し、キャラクターを創造し、<br>
+    ファンダムが生き動く体験を作ります。
+  </p>
+
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-icon">&gt;_</div>
+      <div class="pillar-title">IP Strategy</div>
+      <p class="pillar-desc">世界観ライブラリ設計、キャラクターペルソナ開発、IPライセンス構造コンサルティング</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">#</div>
+      <div class="pillar-title">K-Contents</div>
+      <p class="pillar-desc">ゲーム・ウェブトゥーン・ウェブ小説・放送コンテンツの世界観ベースIP拡張プロデュース</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">&hearts;</div>
+      <div class="pillar-title">Fandom Design</div>
+      <p class="pillar-desc">K-POPアイドルファンダムアクティビティプラットフォーム開発及びリアルタイムファンダム分析</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">AI</div>
+      <div class="pillar-title">AI Technology</div>
+      <p class="pillar-desc">AIファンダム分析エンジン、AIハイパーローカライゼーション、AI世界観ビルダー</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section class="half reveal" id="projects">
+  <p class="sec-label">// projects</p>
+  <h2 class="sec-title">MEJEの作品</h2>
+
+  <div class="projects-grid">
+    <div class="project-card">
+      <span class="project-status ended">&bull; サービス終了</span>
+      <h3 class="project-title">VANNEE World</h3>
+      <p class="project-genre">アイドルファンダムアクティビティプラットフォーム</p>
+      <p class="project-desc">K-POPアイドルグループIPベースのファンダムアクティビティプラットフォーム。43カ国にサービス提供、100日間のシーズン運営、DAUコンバージョン率41%を達成。</p>
+      <a href="https://vanneeworld.com/" class="project-link" target="_blank" rel="noopener">vanneeworld.com &nearr;</a>
+    </div>
+    <div class="project-card">
+      <span class="project-status live">&bull; LIVE</span>
+      <h3 class="project-title">Parrot Hospital Tycoon</h3>
+      <p class="project-genre">カジュアルタイクーンゲーム</p>
+      <p class="project-desc">オウムキャラクターIPベースの病院経営シミュレーション。オリジナルIPユニバース「Perotia」の初タイトルです。</p>
+      <a href="https://play.google.com/store/apps/details?id=com.MEJEWorks.ParrotHospital" class="project-link" target="_blank" rel="noopener">Google Play &nearr;</a>
+    </div>
+    <div class="project-card">
+      <span class="project-status dev">&bull; 開発中</span>
+      <h3 class="project-title">Ghost Restaurant</h3>
+      <p class="project-genre">ストーリー重視タイクーンゲーム</p>
+      <p class="project-desc">韓国伝統の幽霊をテーマにしたレストラン経営ゲーム。ウェブトゥーン及びウェブ小説へのIP展開を進行中です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── NUMBERS ── -->
+<section class="half reveal">
+  <p class="sec-label">// metrics</p>
+  <h2 class="sec-title">数字で見るMEJE</h2>
+
+  <div class="numbers-grid">
+    <div class="number-cell">
+      <div class="number-value">25+</div>
+      <div class="number-label">IP業界経験年数</div>
+    </div>
+    <div class="number-cell">
+      <div class="number-value">43</div>
+      <div class="number-label">サービス提供国</div>
+    </div>
+    <div class="number-cell">
+      <div class="number-value">30+</div>
+      <div class="number-label">講演・講義</div>
+    </div>
+    <div class="number-cell">
+      <div class="number-value">1</div>
+      <div class="number-label">AI特許出願</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT BRIEF ── -->
+<section class="half reveal" id="about">
+  <div class="about-brief">
+    <p class="sec-label">// about</p>
+    <h2 class="sec-title">世界観を創る<br>人々のスタジオ</h2>
+    <p class="sec-desc">
+      MEJE Worksは2021年に設立された世界観ベースのIP戦略スタジオです。<br>
+      BTS World、HYBE世界観ライブラリ、Netmarble R&Dの出身者が率いる<br>
+      ゲーム・エンターテインメント・AI分野のエキスパートチームです。<br>
+      私たちはコンテンツの世界を創ります。
+    </p>
+    <p class="sec-desc" style="margin-top:20px; font-size:14px; color:var(--text-dim);">
+      「誰も孤独であってはならない」 &mdash;<br>
+      世界観を通じてコミュニティを育み、人々をつなぎ、癒します。
+    </p>
+    <a href="../tmi.html" class="cta">MEJEについてもっと詳しく &rarr;</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="landing-footer">
+  <div class="footer-left">
+    <div class="footer-company">MEJE Works Corp.</div>
+    <div class="footer-info">
+      주식회사 메제웍스 ｜ 김동은 ｜ 772-87-02365<br>
+      서울특별시 강남구 역삼로 217. 503호(역삼동)<br>
+      <a href="mailto:Contact@meje.kr">Contact@meje.kr</a> · 0507-1420-1205
+    </div>
+  </div>
+  <div class="footer-right">
+    <a href="../en/privacy.html">プライバシーポリシー</a>
+    <a href="../en/terms.html">利用規約</a>
+    <a href="../tmi.html">TMI</a>
+  </div>
+  <div class="footer-copy">
+    &copy; MEJE Works Corp. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+// Reveal on scroll
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>

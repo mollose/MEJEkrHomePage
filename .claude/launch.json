@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "meje-site",
+      "runtimeExecutable": "C:\\Users\\crew\\node\\node.exe",
+      "runtimeArgs": ["serve.js"],
+      "port": 3000
+    }
+  ]
+}
